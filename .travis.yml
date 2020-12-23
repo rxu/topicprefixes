@@ -33,13 +33,6 @@ env:
     - EPV="1"          # Should we run EPV (Extension Pre Validator) on your code?
     - PHPBB_BRANCH="3.3.x"
 
-branches:
-  only:
-    - master
-    - develop
-    - /^develop-.*$/
-    - /^\d+(\.\d+)?\.x$/
-
 services:
   - postgresql
   - mysql
@@ -49,7 +42,7 @@ install:
   - cd ../../phpBB3
   - travis/prepare-extension.sh $EXTNAME $PHPBB_BRANCH
   - travis/setup-phpbb.sh $DB $TRAVIS_PHP_VERSION $NOTESTS
-  - ../phpbb-extensions/topicprefixes/travis/prepare-epv.sh $EPV $NOTESTS
+  - ../rxu/topicprefixes/travis/prepare-epv.sh $EPV $NOTESTS
 
 before_script:
   - travis/setup-database.sh $DB $TRAVIS_PHP_VERSION $NOTESTS
